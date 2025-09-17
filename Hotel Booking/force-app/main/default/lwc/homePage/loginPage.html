@@ -3,12 +3,20 @@
             <div class="slds-m-around_medium top" >
                 <div class="main" style={currentImage}>
                     <div class="loginbox" style={prevImage}>
+                        <div class="overlay"></div>
                         <form>
-                            <label class="custom-label">UserName</label>
-                            <lightning-input type="text" label="UserName" value={userName} variant="label-hidden"></lightning-input>
+                            <label class="custom-label">Fullname</label>
+                            <lightning-input type="text" label="Fullname" value={fullNameval} name="Fullname__c"  onchange={handlelogininput} variant="label-hidden"></lightning-input>
                             <label class="custom-label">Password</label>
-                            <lightning-input type="password" label="Password" value={password} variant="label-hidden"></lightning-input>
+                            <lightning-input type="password" label="Password" value={password} name="Password__c" min-length="6" onchange={handlelogininput} variant="label-hidden"></lightning-input>
+                            <div class="btn1">
+                                <lightning-button onclick={handlelogininsubmit} label="Submit" variant="Brand" class="slds-m-around_medium"></lightning-button>
+                            </div>
                         </form>
+                        <div class="btn2">
+                            <lightning-button onclick={handleHome} label="Home" variant="Brand" class="slds-m-around_medium"></lightning-button>
+                            <lightning-button onclick={handleSignup} label="Signup" variant="Success" class="slds-m-around_medium"></lightning-button>
+                        </div>
                     </div>
                 </div>
             </div>

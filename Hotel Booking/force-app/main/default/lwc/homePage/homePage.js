@@ -6,17 +6,18 @@ import SIGNUPPAGE from './signupPage.html';
 
 export default class HomePage extends LightningElement {
 
-    // KokanHomeImg = [
-    //     `background-image: url(${kokanHomePageImages}/KokanHomePageImages/KokanImg1.jpg);`,
-    //     `background-image: url(${kokanHomePageImages}/KokanHomePageImages/KokanImg2.jpg);`,
-    //     `background-image: url(${kokanHomePageImages}/KokanHomePageImages/KokanImg3.jpg);`,
-    //     `background-image: url(${kokanHomePageImages}/KokanHomePageImages/KokanImg4.jpg);`
-    // ];
+    currentIndex = 0;
+    currentImage;
+    prevImage;
+    amountval = 0;
+    signupinput = {};
+    logininput = {};
+
     loginpage = LOGINPAGE;
     homepage = HOMEPAGE;
     signuppage = SIGNUPPAGE;
 
-    buttonclick = this.loginpage;
+    buttonclick;
     KokanHomeImg = [
         `${kokanHomePageImages}/KokanHomePageImages/KokanImg1.jpg`,
         `${kokanHomePageImages}/KokanHomePageImages/KokanImg2.jpg`,
@@ -24,9 +25,7 @@ export default class HomePage extends LightningElement {
         `${kokanHomePageImages}/KokanHomePageImages/KokanImg4.jpg`
     ];
 
-    currentIndex = 0;
-    currentImage;
-    prevImage;
+    // home js
     connectedCallback(){
         this.currentImage = `background-image: url(${this.KokanHomeImg[this.currentIndex]});`;
         this.prevImage = `background-image: url(${kokanHomePageImages}/KokanHomePageImages/KokanImg4.jpg);`;
@@ -38,17 +37,50 @@ export default class HomePage extends LightningElement {
 
     updateBackground() {
         this.currentImage = `background-image: url(${this.KokanHomeImg[this.currentIndex]});`;
-        this.prevImage = `background-image: url(${this.KokanHomeImg[this.currentIndex - 1]});`;
+        // this.prevImage = `background-image: url(${this.KokanHomeImg[this.currentIndex - 1]});`;
     }
 
+
+    // signup js
+    handlesignupinput(event){
+        console.log('hello');
+        console.log(event.target.label+ '=>' +event.target.value);
+        if(event.target.value){
+            this.signupinput[event.target.label] = event.target.value;
+        }
+    }
+
+    handlesignupsubmit(){
+        console.log('signupinput'+this.signupinput);
+        console.log('signupinput'+JSON.stringify(this.signupinput));
+    }
+
+    // login js
+    handlelogininput(event){
+        console.log('hello');
+        console.log(event.target.label+ '=>' +event.target.value);
+        if(event.target.value){
+            this.logininput[event.target.label] = event.target.value;
+        }
+    }
+    handlelogininsubmit(){
+        console.log('logininput'+this.logininput);
+        console.log('logininput'+JSON.stringify(this.logininput));
+    }
+     
+    // home js
     handleSignup(){
         this.buttonclick = 'signup';
     }
     handleLogin(){
         this.buttonclick = 'login';
     }
-    render(){
-        return  this.buttonclick == 'signup' ? this.signuppage : this.buttonclick == 'login' ? this.loginpage:this.loginpage;
+    handleHome(){
+        this.buttonclick = 'home';
     }
+    render(){
+        return  this.buttonclick == 'signup' ? this.signuppage : this.buttonclick == 'login' ? this.loginpage: this.homepage;
+    }
+
     
 }
