@@ -3,9 +3,24 @@
             <div class="slds-m-around_medium">
                 <div class="main">
                     <div class="signupbox">
-                        <lightning-input type="text" label="UserName" value={userNameval}></lightning-input>
-                        <lightning-input type="email" label="Email" value={emailval}></lightning-input>
-                        <lightning-input type="password" label="Password" value={password}></lightning-input>
+                        <form>
+                            <lightning-input type="text" label="Fullname" value={fullNameval} name="Fullname__c"  onchange={handlesignupinput}></lightning-input>
+                            <lightning-input type="password" label="Password" value={password} name="Password__c" min-length="6" onchange={handlesignupinput}></lightning-input>
+                            <lightning-input type="tel" label="Phone" value={phoneval} name="Phone__c" onchange={handlesignupinput}></lightning-input>
+                            <lightning-input type="email" label="Email" value={emailval} name="Email__c" onchange={handlesignupinput}></lightning-input>
+                            <lightning-input type="text" label="Street" value={streetval} name="Street__c" onchange={handlesignupinput}></lightning-input>
+                            <lightning-input type="text" label="State" value={stateval} name="State__c" onchange={handlesignupinput}></lightning-input>
+                            <lightning-input type="text" label="City" value={cityval} name="City__c" onchange={handlesignupinput}></lightning-input>
+                            <lightning-input type="number" label="Pincode" value={pincodeval} name="Pincode__c" onchange={handlesignupinput}></lightning-input>
+                            <div class="btn1">
+                                <lightning-button onclick={handlesignupsubmit} label="Submit" variant="Brand" class="slds-m-around_medium"></lightning-button>
+                            </div>
+                        </form>
+                        <hr></hr>
+                        <div class="btn2">
+                            <lightning-button onclick={handleHome} label="Home" variant="Brand" class="slds-m-around_medium"></lightning-button>
+                            <lightning-button onclick={handleLogin}  label="Login" variant="Success" class="slds-m-around_medium"></lightning-button>
+                        </div>
                     </div>
                 </div>
             </div>
