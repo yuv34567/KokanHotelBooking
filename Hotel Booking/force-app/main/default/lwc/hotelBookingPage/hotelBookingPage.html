@@ -1,0 +1,21 @@
+<template>
+    <lightning-card>
+            <div class="slds-m-around_medium">
+                <lightning-input type="text" label="Select Hotel" value={Hotel} name="Hotels__c" readonly></lightning-input>
+                <lightning-input type="text" label="Enter Hotel Number" value={Name} name="Name" onchange={handleChange}></lightning-input>
+                <lightning-input type="text" label="Enter Hotel Name" value={HotelName} name="Hotel_Name__c" onchange={handleChange}></lightning-input>
+                <lightning-input type="email" label="Enter Email Address" value={Email} name="Email__c" onchange={handleChange}></lightning-input>
+                <lightning-input type="number" label="Enter Phone Number" value={Phone} name="Phone__c" onchange={handleChange}></lightning-input>
+                <lightning-input type="datetime" label="Check In Date and Time" value={checkindate} name="Check_In_Date_and_time__c" onchange={handleChange}></lightning-input>
+                <lightning-input type="datetime" label="Check Out Date and Time" value={checkoutdate} name="Check_Out_Date_and_time__c" onchange={handleChange}></lightning-input>
+                <lightning-input type="number" label="Enter the no of person" value="noofperson" name="No_Of_Guest__c" onchange={handleChange}></lightning-input>
+                <lightning-input type="number" label="Total Price" value="totalprice" name="Price__c" onchange={handleChange}></lightning-input>
+
+
+                <lightning-button label="Submit" variant="brand" onclick={handleSubmit}></lightning-button>
+                <lightning-button label="Back" variant="brand" onclick={handleBack}></lightning-button>
+
+
+            </div>
+    </lightning-card>
+</template>
