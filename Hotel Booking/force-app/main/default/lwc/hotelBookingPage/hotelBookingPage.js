@@ -7,6 +7,7 @@ export default class HotelBookingPage extends LightningElement {
         this.bookingData[event.target.name] = event.target.value;
     }
     handleSubmit(){
+        console.log('this.bookingData => '+JSON.stringify(this.bookingData));
         insertbookingdatainobject({bookingDatas:this.bookingData})
         .then(result => {
             console.log(result);
