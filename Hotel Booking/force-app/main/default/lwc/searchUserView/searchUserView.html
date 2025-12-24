@@ -1,8 +1,12 @@
 <template>
     <lightning-card>
         <div class="slds-m-around_medium">
-            <p> Hello User detail view</p>
-
+            <lightning-datatable
+                key-field="Id"
+                data={userData}
+                columns={columns}
+                hide-checkbox-column>
+            </lightning-datatable>
         </div>
     </lightning-card>
 </template>
