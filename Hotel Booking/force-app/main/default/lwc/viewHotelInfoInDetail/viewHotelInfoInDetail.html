@@ -1,0 +1,41 @@
+<template>
+    <lightning-card>
+        <div class="wholecard">
+        <div class="slds-m-around_medium">
+            <template lwc:if={HotelDataWeGet}>
+
+                <div class="outerclass">
+                <template for:each={HotelDataWeGet} for:item="val">
+                    <div key={val.Name}>
+                        <div class="innerclass1">
+                        <img src={val.Hotel_Image__c} alt="Hotel Img 1"></img>
+                        </div>
+                        <div class="innerclass">
+                            <table>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>{val.Name}</td>
+                                </tr>
+                                <tr>
+                                    <td>Hotel Name</td>
+                                    <td>{val.Hotel_Name__c}</td>
+                                </tr>
+                                <tr>
+                                    <td>Phone Number</td>
+                                    <td>{val.Phone_No__c}</td>
+                                </tr>
+                                <tr>
+                                    <td>Price</td>
+                                    <td>{val.Price__c}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </template>
+                </div>
+
+            </template>
+        </div>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,33 @@
+.wholecard{
+    background-color: black;
+    border: 4px solid rgb(224, 70, 211);
+}
+.outerclass{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 20px;
+    justify-content: center;
+}
+.innerclass{
+    display: flex;
+    justify-content: center; /* horizontal */
+    align-items: center;
+}
+.innerclass table tr td{
+    border: 4px solid rgb(224, 70, 211);
+    border-collapse: collapse;
+}
+.innerclass td{
+    font-weight: bold;
+    font-size: large;
+    color: aqua;
+}
+.innerclass1{
+    display: flex;
+    justify-content: center; /* horizontal */
+    align-items: center;
+}
+
+/* .innerclass1 img{
+    border: 4px solid rgb(124, 233, 40);
+} */

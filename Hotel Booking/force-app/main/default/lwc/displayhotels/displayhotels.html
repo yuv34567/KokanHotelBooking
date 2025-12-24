@@ -1,0 +1,26 @@
+<template>
+    <lightning-card>
+        <div class="wholecard">
+            <div class="slds-m-around_medium">
+                <div class="outerclass">
+                <template lwc:if={hotelData}>
+                    
+                    <template for:each={hotelData} for:item="val">
+                        <div key={val.Name} >
+                            <table class="innerclass ">
+                                <tr>
+                                    <td>
+                                    <img src={val.Hotel_Image__c} alt="Hotel Img" data-id={val.Id} onclick={navigatetoanotherpage} class="hotelimg"></img>
+                                    <b class="hotelName">{val.Hotel_Name__c}</b>
+                                    </td>   
+                                </tr>   
+                            </table>
+                        </div>
+                    </template>
+
+                </template>
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+</template>

@@ -5,4 +5,7 @@
     <lightningMessageFields>
         <fieldName>enterUserName</fieldName>
     </lightningMessageFields>
+    <lightningMessageFields>
+        <fieldName>selectHotelInfo</fieldName>
+    </lightningMessageFields>
 </LightningMessageChannel>
