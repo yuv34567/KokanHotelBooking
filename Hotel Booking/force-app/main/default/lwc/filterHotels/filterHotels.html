@@ -1,0 +1,10 @@
+<template>
+    <lightning-card>
+        <div class="slds-m-around_medium">
+            <lightning-input type="text" label="Enter Hotel Name" name="Hotel_Name__c" value={hotelName} onchange={handleInputHN}></lightning-input>
+            <lightning-slider label="Enter Price Range" name="Price__c" value={val} min="1000" max="20000" onchange={handleInputP}></lightning-slider>
+
+            <lightning-button label="Search" onclick={handleSearch}></lightning-button>
+        </div>
+    </lightning-card>
+</template>

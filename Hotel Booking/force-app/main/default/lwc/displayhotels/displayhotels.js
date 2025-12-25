@@ -2,12 +2,43 @@ import { LightningElement, wire } from 'lwc';
 import getallHotelsDataMethod from '@salesforce/apex/getallHotelsData.getallHotelsDataMethod';
 //import { publish, MessageContext } from 'lightning/messageService';
 //import FIRSTMC from '@salesforce/messageChannel/firstMessage__c';
+import FIRSTMC from '@salesforce/messageChannel/firstMessage__c';
+import {subscribe, MessageContext,unsubscribe } from 'lightning/messageService';
 import { NavigationMixin } from 'lightning/navigation';
 
 export default class Displayhotels extends NavigationMixin(LightningElement) {
 
     hotelData = [];
-    @wire(getallHotelsDataMethod)
+    filterDatas =[];
+    HotelSubscribe;
+    @wire(MessageContext)
+    messagecon;
+
+    connectedCallback() {
+            this.HotelSubscribe = subscribe( this.messagecon, FIRSTMC,(message) => this.handleMessage(message));
+    }
+
+    filters = [];
+    handleMessage(message) {
+        console.log('Received message:', JSON.stringify(message));
+
+        // Extract correct payload
+        this.filters =  {...message.filterData.value};
+        console.log('Filters:', JSON.stringify(this.filters));
+
+    //     // Call Apex imperatively
+    //         getallHotelsDataMethod({ hote:filters })
+    //         .then(result => {
+    //             this.hotelData = result;
+    //             console.log('Hotels:', JSON.stringify(result));
+    //         })
+    //         .catch(error => {
+    //             console.error('Apex Error:', error);
+    //         });
+        
+    }
+
+    @wire(getallHotelsDataMethod, {hote:'$filters'})
     getallHotelsDataMethod({data,error}){
         if(data){
             console.log('data', data);
@@ -16,6 +47,11 @@ export default class Displayhotels extends NavigationMixin(LightningElement) {
         if(error){
             console.log('error =>', error);
         }
+    }
+
+    disconnectedCallback() {
+        unsubscribe(this.HotelSubscribe);
+        this.HotelSubscribe = null;
     }
 
     // @wire(MessageContext)

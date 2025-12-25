@@ -8,4 +8,7 @@
     <lightningMessageFields>
         <fieldName>selectHotelInfo</fieldName>
     </lightningMessageFields>
+    <lightningMessageFields>
+        <fieldName>filterData</fieldName>
+    </lightningMessageFields>
 </LightningMessageChannel>
