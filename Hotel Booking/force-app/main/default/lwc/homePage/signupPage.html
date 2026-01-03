@@ -4,16 +4,18 @@
                 <div class="main">
                     <div class="signupbox">
                         <form>
-                            <lightning-input type="text" label="Fullname" value={fullNameval} name="Fullname__c"  onchange={handlesignupinput}></lightning-input>
-                            <lightning-input type="password" label="Password" value={password} name="Password__c" min-length="6" onchange={handlesignupinput}></lightning-input>
-                            <lightning-input type="tel" label="Phone" value={phoneval} name="Phone__c" onchange={handlesignupinput}></lightning-input>
-                            <lightning-input type="email" label="Email" value={emailval} name="Email__c" onchange={handlesignupinput}></lightning-input>
-                            <lightning-input type="text" label="Street" value={streetval} name="Street__c" onchange={handlesignupinput}></lightning-input>
-                            <lightning-input type="text" label="State" value={stateval} name="State__c" onchange={handlesignupinput}></lightning-input>
-                            <lightning-input type="text" label="City" value={cityval} name="City__c" onchange={handlesignupinput}></lightning-input>
-                            <lightning-input type="number" label="Pincode" value={pincodeval} name="Pincode__c" onchange={handlesignupinput}></lightning-input>
+                            <lightning-input type="text" label="Fullname" value={fullNameval} name="Fullname"  onchange={handlesignupinput}></lightning-input>
+                            <lightning-input type="password" label="Password" value={password} name="Password" min-length="6" onchange={handlesignupinput}></lightning-input>
+                            <lightning-input type="tel" label="Phone" value={phoneval} name="Phone" onchange={handlesignupinput}></lightning-input>
+                            <lightning-input type="email" label="Email" value={emailval} name="Email" onchange={handlesignupinput}></lightning-input>
+                            <lightning-input type="text" label="Street" value={streetval} name="Street" onchange={handlesignupinput}></lightning-input>
+                            <lightning-input type="text" label="State" value={stateval} name="State" onchange={handlesignupinput}></lightning-input>
+                            <lightning-input type="text" label="City" value={cityval} name="City" onchange={handlesignupinput}></lightning-input>
+                            <lightning-input type="number" label="Pincode" value={pincodeval} name="Pincode" onchange={handlesignupinput}></lightning-input>
                             <div class="btn1">
+                                <template if:true={showSubmit}>
                                 <lightning-button onclick={handlesignupsubmit} label="Submit" variant="Brand" class="slds-m-around_medium"></lightning-button>
+                                </template>
                             </div>
                         </form>
                         <hr></hr>

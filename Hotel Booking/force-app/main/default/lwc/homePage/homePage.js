@@ -3,8 +3,13 @@ import kokanHomePageImages from '@salesforce/resourceUrl/KokanHomePageImages';
 import LOGINPAGE from './loginPage.html';
 import HOMEPAGE from './homePage.html';
 import SIGNUPPAGE from './signupPage.html';
+import sendUserInfo from '@salesforce/apex/sendUserInfoIntegration.sendUserInfo';
 
 export default class HomePage extends LightningElement {
+    //
+    showSubmit ;
+    
+
 
     currentIndex = 0;
     currentImage;
@@ -40,19 +45,34 @@ export default class HomePage extends LightningElement {
         // this.prevImage = `background-image: url(${this.KokanHomeImg[this.currentIndex - 1]});`;
     }
 
+    Fullname;
 
     // signup js
     handlesignupinput(event){
         console.log('hello');
-        console.log(event.target.label+ '=>' +event.target.value);
+        console.log(event.target.name+ '=>' +event.target.value);
         if(event.target.value){
-            this.signupinput[event.target.label] = event.target.value;
+            this.signupinput[event.target.name] = event.target.value;
         }
+        this.showSubmit = this.signupinput.Fullname !== '';
     }
 
     handlesignupsubmit(){
         console.log('signupinput'+this.signupinput);
         console.log('signupinput'+JSON.stringify(this.signupinput));
+        console.log('this.signupinput.Fullname => '+this.signupinput.Fullname);
+        sendUserInfo({
+            jsonPayload: JSON.stringify({
+                Fullname: this.signupinput.Fullname
+            })
+        })
+        .then(() => {
+            // Async callout → success means job queued
+            alert('User data submitted successfully');
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
     }
 
     // login js
